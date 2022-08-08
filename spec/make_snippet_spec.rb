@@ -6,6 +6,11 @@ RSpec.describe Snippet do
         snippet.make_snippet("Fails if the password length is smaller than 8 characters")
         expect(snippet.make_snippet("Fails if the password length is smaller than 8 characters")).to eq "Fails if the password length..."
     end
+
+    it "fails if there are less than 5 words" do
+        snippet = Snippet.new
+        expect { snippet.make_snippet("netflix is great") }.to raise_error "You need more than 4 words to pass the test."
+    end
 end
 
 
