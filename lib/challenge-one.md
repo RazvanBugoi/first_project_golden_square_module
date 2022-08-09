@@ -31,9 +31,7 @@ _Make a list of examples of what the method will take and return._
 reading_time([1,2,3,4,5,6,7]) => is not a string error
 reading_time(["hello","bye","shoe"]) => 0.9 
 reading_time(["hello","bye","shoe","bye","shoe"]) => 1.5
-reading_time([""]) =>  0
 reading_time([]) =>  0
-reading_time(nil) => we get an error
 ```
 
 _Encode each example as a test. You can add to the above list as you go._

@@ -1,32 +1,24 @@
-# 
-
 require 'reading_time'
 
 
-RSpec.describe ReadingTime do 
-    it "estimate of reading time for a text" do
-        reading = ReadingTime.new
-        reading.reading_time(["hello","bye","shoe"])
-        expect(reading.reading_time(["hello","bye","shoe"])).to eq 0.9
+RSpec.describe "reading_time method" do
+    it "returns 0 if given an empty list" do
+        result = reading_time([])
+        expect(result).to eq 0
     end
-    
+
+    it "returns 0.9 if given a list with 3 words" do
+        result = reading_time(["hello","bye","shoe"])
+        expect(result).to eq 0.9
+    end
+
+    it "returns 1.5 if given a list with 5 words" do
+        result = reading_time(["hello","bye","shoe","bye","shoe"])
+        expect(result).to eq 1.5
+    end
+
+    it "returns fails if the list doesn't contain only strings" do
+        expect { reading_time([1,2,3,4,5,6,7]) }.to raise_error "Your list should only contain strings."
+    end
 end
 
-
-
-
-
-# require 'count_words'
-
-# RSpec.describe Count do
-#     it "checks the number of words in a string" do
-#         counter = Count.new
-#         counter.count_words("This is my long string.")
-#         expect(counter.count_words("This is my long string.")).to eq 5
-#     end
-
-#     it "fails if the length of the string is 0" do
-#         counter = Count.new
-#         expect { counter.count_words("") }.to raise_error "The string is empty!"
-#     end
-# end
